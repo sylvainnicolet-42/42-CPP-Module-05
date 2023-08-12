@@ -5,9 +5,8 @@ Bureaucrat::Bureaucrat(): _name("Bernard"), _grade(150) {
 	std::cout << "Bureaucrat default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &src) {
+Bureaucrat::Bureaucrat(const Bureaucrat &src): _name(src._name), _grade(src._grade) {
 	std::cout << "Bureaucrat copy constructor called" << std::endl;
-	*this = src;
 }
 
 Bureaucrat::~Bureaucrat() {
@@ -28,7 +27,7 @@ Bureaucrat::Bureaucrat(std::string const name, int grade): _name(name), _grade(g
 		throw Bureaucrat::GradeTooLowException();
 }
 
-std::string const	Bureaucrat::getName() const {
+std::string	Bureaucrat::getName() const {
 	return this->_name;
 }
 

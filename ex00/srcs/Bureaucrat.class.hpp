@@ -15,12 +15,12 @@ class Bureaucrat {
 		Bureaucrat(std::string const name, int grade);
 
 		// Getters and setters
-		std::string const	getName() const;
-		int					getGrade() const;
+		std::string	getName() const;
+		int			getGrade() const;
 
 		// Functions
-		void				incrementGrade();
-		void				decrementGrade();
+		void	incrementGrade();
+		void	decrementGrade();
 
 	private:
 		std::string const	_name;

@@ -8,7 +8,3 @@
 # EX01
 /ex01/objs/*.o
 /ex01/ex01
-
-# EX02
-/ex02/objs/*.o
-/ex02/ex02
