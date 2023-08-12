@@ -10,19 +10,6 @@ int main(void) {
 
 	std::cout << std::endl << "Creating a Bureaucrat with grade 1 and signing a Form with grade 1" << std::endl;
 	try {
-		Bureaucrat bureaucrat("Bernard", 1);
-		std::cout << bureaucrat;
-		Form form("Form", 1, 1);
-		std::cout << form;
-		form.beSigned(bureaucrat);
-		std::cout << form;
-	}
-	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-
-	std::cout << std::endl << "Creating a Bureaucrat with grade 1 and signing a Form with grade 1" << std::endl;
-	try {
 		Bureaucrat bureaucrat("Jean", 1);
 		std::cout << bureaucrat;
 		Form form("Contract", 1, 1);
@@ -35,19 +22,6 @@ int main(void) {
 	}
 
 	std::cout << std::endl << "--- WRONG TESTS ---" << std::endl;
-
-	std::cout << std::endl << "Creating a Bureaucrat with grade 2 and signing a Form with grade 1" << std::endl;
-	try {
-		Bureaucrat bureaucrat("Bernard", 2);
-		std::cout << bureaucrat;
-		Form form("Form", 1, 1);
-		std::cout << form;
-		form.beSigned(bureaucrat);
-		std::cout << form;
-	}
-	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
 
 	std::cout << std::endl << "Creating a Bureaucrat with grade 2 and signing a Form with grade 1" << std::endl;
 	try {

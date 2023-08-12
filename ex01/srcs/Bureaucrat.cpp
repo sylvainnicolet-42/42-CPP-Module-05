@@ -56,7 +56,7 @@ void	Bureaucrat::signForm(Form &form) const {
 		std::cout << this->_name << " couldn’t sign " << form.getName() << " because his grade is too low" << std::endl;
 	else {
 		std::cout << this->_name << " signed " << form.getName() << std::endl;
-		form.setIsSigned(true);
+		form.beSigned(*this);
 	}
 }
 

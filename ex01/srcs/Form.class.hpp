@@ -20,12 +20,11 @@ class Form {
 		// Getters and setters
 		std::string	getName() const;
 		bool 		getIsSigned() const;
-		void		setIsSigned(bool isSigned);
 		int			getGradeToSign() const;
 		int			getGradeToExecute() const;
 
 		// Functions
-		void	beSigned(Bureaucrat &bureaucrat);
+		void	beSigned(const Bureaucrat &bureaucrat);
 
 	private:
 		std::string const	_name;

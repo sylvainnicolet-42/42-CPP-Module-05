@@ -35,10 +35,6 @@ bool	Form::getIsSigned() const {
 	return this->_isSigned;
 }
 
-void	Form::setIsSigned(bool isSigned) {
-	this->_isSigned = isSigned;
-}
-
 int	Form::getGradeToSign() const {
 	return this->_gradeToSign;
 }
@@ -47,11 +43,13 @@ int	Form::getGradeToExecute() const {
 	return this->_gradeToExecute;
 }
 
-void	Form::beSigned(Bureaucrat &bureaucrat) {
-	if (bureaucrat.getGrade() > this->_gradeToSign) {
+void	Form::beSigned(const Bureaucrat &bureaucrat) {
+	if (bureaucrat.getGrade() > this->_gradeToSign)
 		throw Form::GradeTooLowException();
-	}
-	this->_isSigned = true;
+	else if (this->_isSigned)
+		std::cout << bureaucrat.getName() << " couldn’t sign " << this->_name << " because it is already signed" << std::endl;
+	else
+		this->_isSigned = true;
 }
 
 std::ostream &operator<<(std::ostream &o, Form const &rhs) {
