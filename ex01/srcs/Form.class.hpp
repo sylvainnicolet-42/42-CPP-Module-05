@@ -5,6 +5,8 @@
 # include <iostream>
 # include "Bureaucrat.class.hpp"
 
+class Bureaucrat;
+
 class Form {
 	public:
 		Form();								// Default constructor
@@ -18,6 +20,7 @@ class Form {
 		// Getters and setters
 		std::string	getName() const;
 		bool 		getIsSigned() const;
+		void		setIsSigned(bool isSigned);
 		int			getGradeToSign() const;
 		int			getGradeToExecute() const;
 

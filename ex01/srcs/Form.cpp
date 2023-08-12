@@ -35,6 +35,10 @@ bool	Form::getIsSigned() const {
 	return this->_isSigned;
 }
 
+void	Form::setIsSigned(bool isSigned) {
+	this->_isSigned = isSigned;
+}
+
 int	Form::getGradeToSign() const {
 	return this->_gradeToSign;
 }
