@@ -7,13 +7,13 @@
 
 class Form {
 	public:
-		Form();									// Default constructor
+		Form();								// Default constructor
 		Form(const Form &src);				// Copy constructor
-		~Form();									// Destructor
+		~Form();							// Destructor
 		Form &operator=(const Form &rhs);	// Assignment operator
 
 		// Custom constructor
-		Form(std::string const name, int grade);
+		Form(std::string const name, int gradeToSign, int gradeToExecute);
 
 		// Getters and setters
 		std::string	getName() const;

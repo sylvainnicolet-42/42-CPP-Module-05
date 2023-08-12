@@ -19,13 +19,12 @@ Form &Form::operator=(const Form &rhs) {
 	return *this;
 }
 
-Form::Form(std::string const name, int grade): _name(name), _isSigned(false), _gradeToSign(grade), _gradeToExecute(grade) {
+Form::Form(std::string const name, int gradeToSign, int gradeToExecute): _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
 	std::cout << "Form custom constructor called" << std::endl;
-	if (grade < 1) {
+	if (gradeToSign < 1 || gradeToExecute < 1)
 		throw Form::GradeTooHighException();
-	} else if (grade > 150) {
+	else if (gradeToSign > 150 || gradeToExecute > 150)
 		throw Form::GradeTooLowException();
-	}
 }
 
 std::string	Form::getName() const {
@@ -42,6 +41,13 @@ int	Form::getGradeToSign() const {
 
 int	Form::getGradeToExecute() const {
 	return this->_gradeToExecute;
+}
+
+void	Form::beSigned(Bureaucrat &bureaucrat) {
+	if (bureaucrat.getGrade() > this->_gradeToSign) {
+		throw Form::GradeTooLowException();
+	}
+	this->_isSigned = true;
 }
 
 std::ostream &operator<<(std::ostream &o, Form const &rhs) {
