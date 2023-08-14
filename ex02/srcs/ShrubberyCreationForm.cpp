@@ -24,28 +24,23 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) : AForm("
 	std::cout << "ShrubberyCreationForm custom constructor called" << std::endl;
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
-	if (executor.getGrade() > this->getGradeToExecute())
-		throw AForm::GradeTooLowException();
-	else if (!this->getIsSigned())
-		std::cout << executor.getName() << " couldn’t execute " << this->getName() << " because it is not signed" << std::endl;
-	else {
-		std::ofstream ofs(this->getTarget() + "_shrubbery");
-		ofs << "       _-_" << std::endl;
-		ofs << "    /~~   ~~\\" << std::endl;
-		ofs << " /~~         ~~\\" << std::endl;
-		ofs << "{               }" << std::endl;
-		ofs << " \\  _-     -_  /" << std::endl;
-		ofs << "   ~  \\\\ //  ~" << std::endl;
-		ofs << "_- -   | | _- _" << std::endl;
-		ofs << "  _ -  | |   -_" << std::endl;
-		ofs << "      // \\\\" << std::endl;
-		ofs << "     //   \\\\" << std::endl;
-		ofs << "    //     \\\\" << std::endl;
-		ofs << "   //       \\\\" << std::endl;
-		ofs << "  //         \\\\" << std::endl;
-		ofs << " //           \\\\" << std::endl;
-		ofs << "//             \\\\" << std::endl;
-		ofs << "___________________" << std::endl;
-	}
+void ShrubberyCreationForm::executeChild() const {
+	std::cout << "ShrubberyCreationForm executeChild called" << std::endl;
+	std::ofstream ofs(this->getTarget() + "_shrubbery");
+	ofs << "       _-_" << std::endl;
+	ofs << "    /~~   ~~\\" << std::endl;
+	ofs << " /~~         ~~\\" << std::endl;
+	ofs << "{               }" << std::endl;
+	ofs << " \\  _-     -_  /" << std::endl;
+	ofs << "   ~  \\\\ //  ~" << std::endl;
+	ofs << "_- -   | | _- _" << std::endl;
+	ofs << "  _ -  | |   -_" << std::endl;
+	ofs << "      // \\\\" << std::endl;
+	ofs << "     //   \\\\" << std::endl;
+	ofs << "    //     \\\\" << std::endl;
+	ofs << "   //       \\\\" << std::endl;
+	ofs << "  //         \\\\" << std::endl;
+	ofs << " //           \\\\" << std::endl;
+	ofs << "//             \\\\" << std::endl;
+	ofs << "___________________" << std::endl;
 }

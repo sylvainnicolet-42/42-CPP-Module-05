@@ -26,9 +26,11 @@ class AForm {
 
 		// Functions
 		void	beSigned(const Bureaucrat &bureaucrat);
-		virtual void	execute(Bureaucrat const &executor) const = 0;
+		void	execute(Bureaucrat const &executor) const;
 
 	private:
+		virtual void	executeChild() const = 0;
+
 		std::string const	_name;
 		bool				_isSigned;
 		int const			_gradeToSign;

@@ -11,7 +11,7 @@ int main() {
 	std::cout << std::endl << "Creating a ShrubberyCreationForm" << std::endl;
 	ShrubberyCreationForm shrubberyCreationForm("home");
 	std::cout << shrubberyCreationForm;
-	Bureaucrat admin("Admin", 138);
+	Bureaucrat admin("Admin", 1);
 	std::cout << admin;
 	admin.signForm(shrubberyCreationForm);
 	std::cout << shrubberyCreationForm;
