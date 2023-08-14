@@ -4,7 +4,7 @@
 #include "Bureaucrat.class.hpp"
 #include "Form.class.hpp"
 
-int main(void) {
+int main() {
 
 	std::cout << std::endl << "--- CORRECT TESTS ---" << std::endl;
 
