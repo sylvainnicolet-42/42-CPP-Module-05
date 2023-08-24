@@ -18,6 +18,4 @@ class ShrubberyCreationForm: public AForm {
 		void	executeChild() const;
 };
 
-
-
 #endif
