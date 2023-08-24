@@ -26,11 +26,8 @@ RobotomyRequestForm::RobotomyRequestForm(std::string const& target) : AForm("Rob
 void RobotomyRequestForm::executeChild() const {
 	std::cout << "BzzzzZZZzzzzZZZzzzZZZzzz!" << std::endl;
 
-	// Get timestamp in milliseconds
-	// std::chrono::system_clock::now() -> Get the actual timestamp using <chrono> library
-	// time_since_epoch().count() -> Get the number of milliseconds since 01/01/1970
-	int timestamp = std::chrono::system_clock::now().time_since_epoch().count();
-	if (timestamp % 2)
+	// 50% chance of success
+	if (std::rand() % 2)
 		std::cout << this->getTarget() << " has been robotomized successfully!" << std::endl;
 	else
 		std::cout << this->getTarget() << " robotomization failed!" << std::endl;
