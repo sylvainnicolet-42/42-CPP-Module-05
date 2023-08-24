@@ -6,13 +6,12 @@
 
 class Bureaucrat {
 	public:
-		Bureaucrat();									// Default constructor
 		Bureaucrat(const Bureaucrat &src);				// Copy constructor
 		~Bureaucrat();									// Destructor
 		Bureaucrat &operator=(const Bureaucrat &rhs);	// Assignment operator
 
 		// Custom constructor
-		Bureaucrat(std::string const name, int grade);
+		Bureaucrat(std::string const& name, int grade);
 
 		// Getters and setters
 		std::string	getName() const;
@@ -23,6 +22,7 @@ class Bureaucrat {
 		void	decrementGrade();
 
 	private:
+		Bureaucrat();	// Default constructor
 		std::string const	_name;
 		int					_grade;
 
