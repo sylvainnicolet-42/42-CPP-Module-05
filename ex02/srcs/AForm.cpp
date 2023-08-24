@@ -19,7 +19,7 @@ AForm &AForm::operator=(const AForm &rhs) {
 	return *this;
 }
 
-AForm::AForm(std::string const name, int gradeToSign, int gradeToExecute, std::string const target): _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute), _target(target) {
+AForm::AForm(std::string const& name, int gradeToSign, int gradeToExecute, std::string const& target): _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute), _target(target) {
 	std::cout << "Form custom constructor called" << std::endl;
 	if (gradeToSign < 1 || gradeToExecute < 1)
 		throw AForm::GradeTooHighException();
@@ -51,16 +51,16 @@ void	AForm::beSigned(const Bureaucrat &bureaucrat) {
 	if (bureaucrat.getGrade() > this->_gradeToSign)
 		throw AForm::GradeTooLowException();
 	else if (this->_isSigned)
-		std::cout << bureaucrat.getName() << " couldn’t sign " << this->_name << " because it is already signed" << std::endl;
+		throw AForm::FormAlreadySignedException();
 	else
 		this->_isSigned = true;
 }
 
 void	AForm::execute(const Bureaucrat &executor) const {
-	if (!this->_isSigned)
-		std::cout << executor.getName() << " couldn’t execute " << this->_name << " because it is not signed" << std::endl;
-	else if (executor.getGrade() > this->_gradeToExecute)
+	if (executor.getGrade() > this->_gradeToExecute)
 		throw AForm::GradeTooLowException();
+	else if (!this->_isSigned)
+		throw AForm::FormNotSignedException();
 	else {
 		executeChild();
 	}

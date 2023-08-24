@@ -19,7 +19,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs) {
 	return *this;
 }
 
-Bureaucrat::Bureaucrat(std::string const name, int grade): _name(name), _grade(grade) {
+Bureaucrat::Bureaucrat(std::string const& name, int grade): _name(name), _grade(grade) {
 	std::cout << "Bureaucrat constructor called" << std::endl;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
@@ -50,24 +50,22 @@ void	Bureaucrat::decrementGrade() {
 }
 
 void	Bureaucrat::signForm(AForm &form) const {
-	if (form.getIsSigned())
-		std::cout << this->_name << " couldn’t sign " << form.getName() << " because it is already signed" << std::endl;
-	else if (this->_grade > form.getGradeToSign())
-		std::cout << this->_name << " couldn’t sign " << form.getName() << " because his grade is too low" << std::endl;
-	else {
-		std::cout << this->_name << " signed " << form.getName() << std::endl;
+	try {
 		form.beSigned(*this);
+		std::cout << this->_name << " signs " << form.getName() << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cout << this->_name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
 
 void	Bureaucrat::executeForm(AForm const &form) const {
-	if (!form.getIsSigned())
-		std::cout << this->_name << " couldn’t execute " << form.getName() << " because it is not signed" << std::endl;
-	else if (this->_grade > form.getGradeToExecute())
-		std::cout << this->_name << " couldn’t execute " << form.getName() << " because his grade is too low" << std::endl;
-	else {
+	try {
 		std::cout << this->_name << " executed " << form.getName() << std::endl;
 		form.execute(*this);
+	}
+	catch (std::exception &e) {
+		std::cout << this->_name << " couldn’t execute " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
 

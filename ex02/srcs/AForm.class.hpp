@@ -9,13 +9,12 @@ class Bureaucrat;
 
 class AForm {
 	public:
-		AForm();								// Default constructor
 		AForm(const AForm &src);				// Copy constructor
 		virtual ~AForm();						// Destructor
 		AForm &operator=(const AForm &rhs);		// Assignment operator
 
 		// Custom constructor
-		AForm(std::string const name, int gradeToSign, int gradeToExecute, std::string const target);
+		AForm(std::string const& name, int gradeToSign, int gradeToExecute, std::string const& target);
 
 		// Getters and setters
 		std::string	getName() const;
@@ -29,6 +28,7 @@ class AForm {
 		void	execute(Bureaucrat const &executor) const;
 
 	private:
+		AForm();	// Default constructor
 		virtual void	executeChild() const = 0;
 
 		std::string const	_name;
@@ -50,6 +50,20 @@ class AForm {
 		public:
 			virtual const char *what() const throw() {
 				return "Grade is too low";
+			}
+		};
+
+		class FormAlreadySignedException: public std::exception {
+		public:
+			virtual const char *what() const throw() {
+				return "Form is already signed";
+			}
+		};
+
+		class FormNotSignedException: public std::exception {
+		public:
+			virtual const char *what() const throw() {
+				return "Form is not signed";
 			}
 		};
 };
