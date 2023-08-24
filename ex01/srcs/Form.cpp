@@ -19,7 +19,7 @@ Form &Form::operator=(const Form &rhs) {
 	return *this;
 }
 
-Form::Form(std::string const name, int gradeToSign, int gradeToExecute): _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
+Form::Form(std::string const &name, int gradeToSign, int gradeToExecute): _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
 	std::cout << "Form custom constructor called" << std::endl;
 	if (gradeToSign < 1 || gradeToExecute < 1)
 		throw Form::GradeTooHighException();
@@ -47,7 +47,7 @@ void	Form::beSigned(const Bureaucrat &bureaucrat) {
 	if (bureaucrat.getGrade() > this->_gradeToSign)
 		throw Form::GradeTooLowException();
 	else if (this->_isSigned)
-		std::cout << bureaucrat.getName() << " couldn’t sign " << this->_name << " because it is already signed" << std::endl;
+		throw Form::FormAlreadySignedException();
 	else
 		this->_isSigned = true;
 }
