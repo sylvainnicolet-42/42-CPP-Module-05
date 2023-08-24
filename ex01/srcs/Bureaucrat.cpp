@@ -50,13 +50,12 @@ void	Bureaucrat::decrementGrade() {
 }
 
 void	Bureaucrat::signForm(Form &form) const {
-	if (form.getIsSigned())
-		std::cout << this->_name << " couldn’t sign " << form.getName() << " because it is already signed" << std::endl;
-	else if (this->_grade > form.getGradeToSign())
-		std::cout << this->_name << " couldn’t sign " << form.getName() << " because his grade is too low" << std::endl;
-	else {
-		std::cout << this->_name << " signed " << form.getName() << std::endl;
+	try {
 		form.beSigned(*this);
+		std::cout << this->_name << " signs " << form.getName() << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cout << this->_name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
 
