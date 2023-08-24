@@ -19,7 +19,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &rhs) {
 	return *this;
 }
 
-Bureaucrat::Bureaucrat(std::string const name, int grade): _name(name), _grade(grade) {
+Bureaucrat::Bureaucrat(std::string const& name, int grade): _name(name), _grade(grade) {
 	std::cout << "Bureaucrat constructor called" << std::endl;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
