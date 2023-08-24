@@ -20,13 +20,14 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return *this;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) : AForm("ShrubberyCreationForm", 145, 137, target) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const& target) : AForm("ShrubberyCreationForm", 145, 137, target) {
 	std::cout << "ShrubberyCreationForm custom constructor called" << std::endl;
 }
 
+// https://cplusplus.com/reference/fstream/ofstream/ofstream/
 void ShrubberyCreationForm::executeChild() const {
 	std::cout << "ShrubberyCreationForm executeChild called" << std::endl;
-	std::ofstream ofs(this->getTarget() + "_shrubbery");
+	std::ofstream ofs(this->getTarget() + "_shrubbery", std::ofstream::out);
 	ofs << "       _-_" << std::endl;
 	ofs << "    /~~   ~~\\" << std::endl;
 	ofs << " /~~         ~~\\" << std::endl;
@@ -43,4 +44,5 @@ void ShrubberyCreationForm::executeChild() const {
 	ofs << " //           \\\\" << std::endl;
 	ofs << "//             \\\\" << std::endl;
 	ofs << "___________________" << std::endl;
+	ofs.close();
 }

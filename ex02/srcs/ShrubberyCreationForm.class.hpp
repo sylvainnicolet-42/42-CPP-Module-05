@@ -6,15 +6,15 @@
 
 class ShrubberyCreationForm: public AForm {
 	public:
-		ShrubberyCreationForm();											// Default constructor
 		ShrubberyCreationForm(const ShrubberyCreationForm &src);			// Copy constructor
 		virtual ~ShrubberyCreationForm();									// Destructor
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &rhs);	// Assignment operator
 
 		// Custom constructor
-		ShrubberyCreationForm(std::string const target);
+		ShrubberyCreationForm(std::string const& target);
 
 	private:
+		ShrubberyCreationForm();	// Default constructor
 		void	executeChild() const;
 };
 

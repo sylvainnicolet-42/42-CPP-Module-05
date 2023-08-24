@@ -4,20 +4,46 @@
 #include "Bureaucrat.class.hpp"
 #include "ShrubberyCreationForm.class.hpp"
 
+void	test_sign_shrubbery_form(int gradeBureaucrat) {
+	std::cout << std::endl << "--- TEST: sign ShrubberyCreationForm ---" << std::endl;
+
+	try {
+		ShrubberyCreationForm shrubberyCreationForm("garden");
+		std::cout << shrubberyCreationForm;
+		Bureaucrat bureaucrat("Bernard", gradeBureaucrat);
+		std::cout << bureaucrat;
+		bureaucrat.signForm(shrubberyCreationForm);
+		std::cout << shrubberyCreationForm;
+	}
+	catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+}
+
+void	test_exec_shrubbery_form(int gradeBureaucrat, bool signBefore) {
+	std::cout << std::endl << "--- TEST: execute ShrubberyCreationForm ---" << std::endl;
+
+	try {
+		ShrubberyCreationForm shrubberyCreationForm("garden");
+		std::cout << shrubberyCreationForm;
+		Bureaucrat bureaucrat("Bernard", gradeBureaucrat);
+		std::cout << bureaucrat;
+		if (signBefore)
+			bureaucrat.signForm(shrubberyCreationForm);
+		bureaucrat.executeForm(shrubberyCreationForm);
+		std::cout << shrubberyCreationForm;
+	}
+	catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+}
+
 int main() {
-
-	std::cout << std::endl << "--- CORRECT TESTS ---" << std::endl;
-
-	std::cout << std::endl << "Creating a ShrubberyCreationForm" << std::endl;
-	ShrubberyCreationForm shrubberyCreationForm("home");
-	std::cout << shrubberyCreationForm;
-	Bureaucrat admin("Admin", 1);
-	std::cout << admin;
-	admin.signForm(shrubberyCreationForm);
-	std::cout << shrubberyCreationForm;
-	admin.executeForm(shrubberyCreationForm);
-
-	std::cout << std::endl << "--- WRONG TESTS ---" << std::endl;
+	test_sign_shrubbery_form(145);
+	test_sign_shrubbery_form(146);
+	test_exec_shrubbery_form(130, false);
+	test_exec_shrubbery_form(138, true);
+	test_exec_shrubbery_form(137, true);
 
 	return 0;
 }
